@@ -1,34 +1,57 @@
-# Directorio de dependencias
+# Dependencies and package manager files
 node_modules/
-
-# logs
-*.log
-
-# npm cache directory
-.npm
-
-# vscode
-.vscode/
-
-# package json lock
 package-lock.json
+.npm/
 
-# mochawesome
-mochawesome-report/
+# Logs and debug files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# screenshots
+# IDE and editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Cypress reports, screenshots, and videos
 cypress/screenshots/
-
-# cypress reports
-cypress/reports
-
-# Ignorar reportes de Cypress 
+cypress/videos/
 cypress/reports/
 cypress/reports/electron/
 cypress/reports/electron/assets/
 
-# Ignorar archivos de fuentes 
-*.woff [0-9]*
+# Mochawesome reports
+mochawesome-report/
+mochawesome-report-generator/
 
-# Ignorar configuraciones locales y archivos sensibles 
-.env
+# Environment variables and sensitive configuration files
+.env*
+
+# Test results and coverage reports (Cypress, Jest, etc.)
+cypress/results/
+cypress/output/
+junit/
+coverage/
+nyc_output/
+jest/
+
+# Font and binary files
+*.woff
+*.woff2
+*.ttf
+*.eot
+
+# Docker-related files
+docker-compose.override.yml
+.dockerignore
+
+# System and temporary files
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp

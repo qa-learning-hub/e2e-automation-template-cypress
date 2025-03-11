@@ -141,6 +141,7 @@ npx cypress run --browser firefox
 ```bash
 npx cypress run --parallel
 ```
+> **Note:** These flags can only be used when recording to Cypress Cloud..
 
 - Use **Cypress Dashboard** for better execution tracking.
 
@@ -149,8 +150,8 @@ npx cypress run --parallel
 - Example `.env` file:
 
 ```env
-CYPRESS_USERNAME=admin
-CYPRESS_PASSWORD=securepassword
+CYPRESS_USERNAME= ****
+CYPRESS_PASSWORD= ****
 ```
 
 ---

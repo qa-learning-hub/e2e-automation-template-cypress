@@ -1,76 +1,213 @@
-[BF] QA Learning Hub - E2E Automation Template Cypress
+# [BF] QA Learning Hub - E2E Automation Template Cypress
 
-E2E Automation Cypress Template - BLANKFACTOR QA TEAM
+This repository is a template for **E2E test automation with Cypress**, developed by the **Blankfactor QA team**.
 
-# Setup
+## Repository Objective
 
-The following setup is required:
+This repository aims to provide a solid foundation for E2E test automation using Cypress, following best coding practices and automation standards. It is designed to be scalable, reusable, and easy to maintain.
 
-## Initial Project Setup
+---
 
-NOTE: The project implementation is based on
-https://www.cypress.io/
+## Prerequisites
 
-### Install node:
+Before starting, ensure you have the following components installed on your system:
 
-NOTE: We are using the latest recommend version of node
-https://nodejs.org/en/download/
+- **Node.js and npm**: Cypress is installed via npm. Version `>=22.13.1` is recommended for compatibility. Download it from [here](https://nodejs.org/en/download/).
+  
+  ```bash
+  node -v  # Check Node.js version
+  npm -v   # Check npm version
+  ```
 
-#### install node to a particular version:
+- **Git**: Required to clone the repository.
+  
+  ```bash
+  git --version
+  ```
+  
+  If not installed, download it from [here](https://git-scm.com/).
 
-$ sudo npm cache clean -f
-$ sudo npm install -g n
-$ sudo n 20.11.1
+---
 
-> **Note:** If you use nvm you can use the setup version in `.nvmrc`
+## Clone the Repository and Set Up the Project
 
-### Setup the project:
+To get a local copy of the project, open the terminal and run:
 
-$ cd ~/your_code_dir
-$ git clone [🔗 Repositorio E2E Automation Template - Cypress](https://github.com/qa-learning-hub/e2e-automation-template-cypress.git)
-$ cd E2E-AUTOMATION-TEMPLATE-CYPRESS
-$ npm install
-$ npm start
+```bash
+cd ~/your_code_dir
+git clone https://github.com/qa-learning-hub/e2e-automation-template-cypress.git
+cd e2e-automation-template-cypress
+npm install
+```
 
-# Scripts
+To start the project, use:
 
-## Run Integration Tests locally
+```bash
+npm start
+```
 
-You can run local tests by specifying either a single spec file or an entire folder.
+---
 
-To run an entire folder, replace `FOLDER` with the desired one:
+## Install a Specific Version of Node.js
 
-`npx cypress run './cypress/integration/FOLDER/**/*.cy.js'`
+If you need to install a specific version of Node.js, use the following commands:
 
-Example: `npx cypress run '.cypress/e2e/**/*cy.js'`
+```bash
+sudo npm cache clean -f
+sudo npm install -g n
+sudo n 22.13.1
+```
 
-By default, the tests will run on `QA` environment. If you want to change that
-you can specify the `environment=<qa/staging/production>`CLI argument
+> **Note:** If you use `nvm`, you can use the version defined in the `.nvmrc` file.
 
-## Run local tests headed (Open mode)
+---
 
-`npm run start` - This command opens Cypress and allows you to select the browser
-you want to run tests on and specify the spec file you want to run
+## Project Structure
 
-## Run local tests headless
+```
+📂 e2e-automation-template-cypress
+├── 📂 cypress
+│   ├── 📂 e2e            # Directory containing Cypress test cases
+│   ├── 📂 fixtures       # JSON files with reusable test data
+│   ├── 📂 support        # Custom configurations and commands
+├── 📄 cypress.config.js  # Main Cypress configuration file
+├── 📄 package.json       # Project dependencies and scripts
+```
 
-`npm run run` - This command will run all the `@exampleSanity` tagged tests and
-run them in `Chrome` browser while register the run in Cypress Cloud dashboard.
+- **e2e/**: Contains the automated test cases.
+- **fixtures/**: JSON files with reusable test data.
+- **support/**: Custom methods and commands to improve reusability.
+- **cypress.config.js**: Global Cypress configuration.
 
-`npm run test` - Same as above but this command won't do any Cypress Cloud registration.
+---
 
-To trigger runs on different environments, here are some examples you can follow:
+## Coding Standards and Best Practices
 
-`npm run test -- --env environment=qa` - Trigger headless run on `QA`
+### General Guidelines
+- Each test case should belong to a proper test suite and be tagged accordingly (`sanity`, `regression`, etc.).
+- No assumptions should be made about system state or preconditions.
+- Use proper selectors to identify elements and map them using the **Page Object Model (POM)**.
+- No hard-coded data in test cases—use **fixtures** with appropriate templates and constants only when necessary.
+- Avoid duplicate or redundant methods (selectors, page loads, etc.).
+- Remove unused imports and unnecessary methods.
+- Do not leave `console.log` or `cy.log` statements in the code.
+- Ensure meaningful method names; parameters should be clear and understandable.
+- Avoid code duplication—create reusable commands if needed.
+- Keep spec files small and modular to improve performance and maintainability.
+- Avoid ambiguous or confusing variable/method names.
+- If a code smell is identified, provide an example with a suggested fix.
+- Follow best practices and accept PR feedback constructively.
 
-## Trigger Jenkins pipeline
+### Example Test
 
-To trigger a run on Jenkins, follow the next steps:
-1. Go to *Jenkins URL*
-2. Click on `Build with Parameters`
-3. Specify the `branchName`, `environment`, `browser` and `nodeVersion` you want to use
-4. Click on `Build`
+```js
+describe('Login', () => {
+  it('Should log in with valid credentials', () => {
+    cy.visit('/login');
+    cy.get('#username').type('demo_user');
+    cy.get('#password').type('secure_password');
+    cy.get('button[type=submit]').click();
+    cy.contains('Welcome, demo_user').should('be.visible');
+  });
+});
+```
 
-Note: Currently, the only supported browser is `Chrome`
+---
 
-After the run is completed, you can find the HTML report attached to each run.
+## Running Tests
+
+### 🔹 Run tests in interactive mode
+
+```bash
+npx cypress open
+```
+
+### 🔹 Run tests in headless mode
+
+```bash
+npx cypress run
+```
+
+### 🔹 Run a specific test
+
+```bash
+npx cypress run --spec cypress/e2e/login.cy.js
+```
+
+### 🔹 Run tests in different environments
+
+```bash
+npx cypress run --env env=qa
+```
+
+---
+
+## Available Scripts
+
+The `package.json` file contains the following useful scripts:
+
+### 🔹 Run tests in graphical mode
+
+```bash
+npm run start
+```
+
+### 🔹 Run tests in headless mode
+
+```bash
+npm run test
+```
+
+### 🔹 Run tests with different configurations:
+
+```bash
+npm run test:qa      # Run tests in QA environment
+npm run test:staging # Run tests in Staging environment
+npm run test:prod    # Run tests in Production environment
+```
+
+Example configuration in `package.json`:
+
+```json
+"scripts": {
+  "start": "npx cypress open",
+  "test": "npx cypress run",
+  "test:qa": "npx cypress run --env env=qa",
+  "test:staging": "npx cypress run --env env=staging",
+  "test:prod": "npx cypress run --env env=production"
+}
+```
+
+---
+
+## Running Tests in Jenkins
+
+To run tests in Jenkins:
+
+1. Go to *Jenkins URL*.
+2. Click on `Build with Parameters`.
+3. Specify:
+   - `branchName`
+   - `environment` (`qa`, `staging`, `production`)
+   - `browser` (currently only Chrome is supported)
+   - `nodeVersion`
+4. Click `Build`.
+
+After execution, you can find the HTML report attached to each run.
+
+---
+
+## Additional Resources
+
+📌 Official Cypress Documentation: [https://docs.cypress.io](https://docs.cypress.io)
+
+📌 Video tutorial in Spanish: [Watch on YouTube](https://www.youtube.com/watch?v=YdTlhb02L2I\&utm_source=chatgpt.com)
+
+---
+
+### Ready to Get Started?
+
+Follow the steps and start running automation tests with **Cypress**. 🚀
+
+📌 *If you encounter issues, check the documentation or open an issue in this repository.*
+

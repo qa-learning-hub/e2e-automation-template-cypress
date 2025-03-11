@@ -11,7 +11,12 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "start": "npx cypress open",
+    "test": "npx cypress run",
+    "test:qa": "npx cypress run --env env=qa",
+    "test:staging": "npx cypress run --env env=staging",
+    "test:prod": "npx cypress run --env env=production"
   },
   "dependencies": {
     "@cypress/grep": "^4.1.0",

@@ -81,24 +81,12 @@ sudo n 22.13.1
 
 ---
 
-## Coding Standards and Best Practices
+## 🛠️ How to Add a New Test
 
-### General Guidelines
-- Each test case should belong to a proper test suite and be tagged accordingly (`sanity`, `regression`, etc.).
-- No assumptions should be made about system state or preconditions.
-- Use proper selectors to identify elements and map them using the **Page Object Model (POM)**.
-- No hard-coded data in test cases—use **fixtures** with appropriate templates and constants only when necessary.
-- Avoid duplicate or redundant methods (selectors, page loads, etc.).
-- Remove unused imports and unnecessary methods.
-- Do not leave `console.log` or `cy.log` statements in the code.
-- Ensure meaningful method names; parameters should be clear and understandable.
-- Avoid code duplication—create reusable commands if needed.
-- Keep spec files small and modular to improve performance and maintainability.
-- Avoid ambiguous or confusing variable/method names.
-- If a code smell is identified, provide an example with a suggested fix.
-- Follow best practices and accept PR feedback constructively.
-
-### Example Test
+1. Navigate to the `cypress/e2e/` directory.
+2. Create a new `.cy.js` file with a meaningful name.
+3. Write your test following best practices (see the next section).
+4. Example test:
 
 ```js
 describe('Login', () => {
@@ -110,6 +98,59 @@ describe('Login', () => {
     cy.contains('Welcome, demo_user').should('be.visible');
   });
 });
+```
+
+5. Run your test using:
+```bash
+npx cypress run --spec cypress/e2e/login.cy.js
+```
+
+---
+
+## Coding Standards and Best Practices
+
+- Each test case should belong to a **proper test suite** and be tagged accordingly (`sanity`, `regression`, etc.).
+- No assumptions should be made about the system state.
+- Use **proper selectors** to identify elements and follow the **Page Object Model (POM)**.
+- **Avoid hard-coded data**—use `fixtures` for reusable test data.
+- Do not create **unused or duplicate methods**.
+- Remove **console logs**, **cy logs**, and **unused imports**.
+- Do not leave **commented code** in test files.
+- Ensure **meaningful method names** and **clear parameter names**.
+- Avoid **duplicating code**—create reusable Cypress commands when needed.
+- Keep **spec files small and modular**.
+- Use **clear and descriptive names** for tests, methods, and variables.
+- If a **code smell** is found, provide an example and a suggested fix.
+- Follow best practices and **accept PR feedback constructively**.
+
+---
+
+## Advanced Best Practices
+
+### Cross-Browser Testing
+- Run tests on multiple browsers:
+
+```bash
+npx cypress run --browser chrome
+npx cypress run --browser firefox
+```
+
+### Performance Optimization
+- Run tests in parallel with:
+
+```bash
+npx cypress run --parallel
+```
+
+- Use **Cypress Dashboard** for better execution tracking.
+
+### Security & Compliance
+- Use environment variables for sensitive data instead of hardcoding.
+- Example `.env` file:
+
+```env
+CYPRESS_USERNAME=admin
+CYPRESS_PASSWORD=securepassword
 ```
 
 ---
@@ -138,24 +179,6 @@ npx cypress run --spec cypress/e2e/login.cy.js
 
 ```bash
 npx cypress run --env env=qa
-```
-
----
-
-## Available Scripts
-
-The `package.json` file contains the following useful scripts:
-
-### 🔹 Run tests in graphical mode
-
-```bash
-npm run start
-```
-
-### 🔹 Run tests in headless mode
-
-```bash
-npm run test
 ```
 
 ### 🔹 Run tests with different configurations:

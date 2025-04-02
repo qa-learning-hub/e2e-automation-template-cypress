@@ -1,6 +1,25 @@
-# [BF] QA Learning Hub - E2E Automation Template Cypress
+# QA Learning Hub - E2E Automation Template Cypress
 
-This repository is a template for **E2E test automation with Cypress**, developed by the **Blankfactor QA team**.
+A robust and easy-to-use template designed to accelerate your end-to-end (E2E) testing journey with Cypress. This framework simplifies the setup process, promotes best practices, and helps you write clear, reliable, and maintainable automated tests for web applications.
+
+**Key Features:**
+
+* Easy Setup: Clone, install, and start testing in minutes.
+* Best Practices: Built around industry-proven E2E testing practices.
+* Scalable Structure: Organized and modular, ideal for growing test suites.
+* Clear Documentation: Well-documented structure, setup steps, and usage examples.
+* CI/CD Ready: Seamless integration with popular continuous integration tools.
+
+## 📚 Table of Contents
+
+- [Repository Objective](#repository-objective)
+- [Prerequisites](#prerequisites)
+- [Project Setup](#project-setup)
+- [Running Tests](#running-tests)
+- [Project Structure](#project-structure)
+- [Coding Standards and Best Practices](#coding-standards-and-best-practices)
+- [Aditional Resources](#additional-resources)
+- [Contributing](#contributing)
 
 ## Repository Objective
 
@@ -29,7 +48,7 @@ Before starting, ensure you have the following components installed on your syst
 
 ---
 
-## Clone the Repository and Set Up the Project
+## Project Setup
 
 To get a local copy of the project, open the terminal and run:
 
@@ -59,69 +78,6 @@ sudo n 22.13.1
 ```
 
 > **Note:** If you use `nvm`, you can use the version defined in the `.nvmrc` file.
-
----
-
-## Project Structure
-
-```
-📂 e2e-automation-template-cypress
-├── 📂 cypress
-│   ├── 📂 e2e            # Directory containing Cypress test cases
-│   ├── 📂 fixtures       # JSON files with reusable test data
-│   ├── 📂 support        # Custom configurations and commands
-├── 📄 cypress.config.js  # Main Cypress configuration file
-├── 📄 package.json       # Project dependencies and scripts
-```
-
-- **e2e/**: Contains the automated test cases.
-- **fixtures/**: JSON files with reusable test data.
-- **support/**: Custom methods and commands to improve reusability.
-- **cypress.config.js**: Global Cypress configuration.
-
----
-
-## 🛠️ How to Add a New Test
-
-1. Navigate to the `cypress/e2e/` directory.
-2. Create a new `.cy.js` file with a meaningful name.
-3. Write your test following best practices (see the next section).
-4. Example test:
-
-```js
-describe('Login', () => {
-  it('Should log in with valid credentials', () => {
-    cy.visit('/login');
-    cy.get('#username').type('demo_user');
-    cy.get('#password').type('secure_password');
-    cy.get('button[type=submit]').click();
-    cy.contains('Welcome, demo_user').should('be.visible');
-  });
-});
-```
-
-5. Run your test using:
-```bash
-npx cypress run --spec cypress/e2e/login.cy.js
-```
-
----
-
-## Coding Standards and Best Practices
-
-- Each test case should belong to a **proper test suite** and be tagged accordingly (`sanity`, `regression`, etc.).
-- No assumptions should be made about the system state.
-- Use **proper selectors** to identify elements and follow the **Page Object Model (POM)**.
-- **Avoid hard-coded data**—use `fixtures` for reusable test data.
-- Do not create **unused or duplicate methods**.
-- Remove **console logs**, **cy logs**, and **unused imports**.
-- Do not leave **commented code** in test files.
-- Ensure **meaningful method names** and **clear parameter names**.
-- Avoid **duplicating code**—create reusable Cypress commands when needed.
-- Keep **spec files small and modular**.
-- Use **clear and descriptive names** for tests, methods, and variables.
-- If a **code smell** is found, provide an example and a suggested fix.
-- Follow best practices and **accept PR feedback constructively**.
 
 ---
 
@@ -221,6 +177,69 @@ After execution, you can find the HTML report attached to each run.
 
 ---
 
+## Project Structure
+
+```
+📂 e2e-automation-template-cypress
+├── 📂 cypress
+│   ├── 📂 e2e            # Directory containing Cypress test cases
+│   ├── 📂 fixtures       # JSON files with reusable test data
+│   ├── 📂 support        # Custom configurations and commands
+├── 📄 cypress.config.js  # Main Cypress configuration file
+├── 📄 package.json       # Project dependencies and scripts
+```
+
+- **e2e/**: Contains the automated test cases.
+- **fixtures/**: JSON files with reusable test data.
+- **support/**: Custom methods and commands to improve reusability.
+- **cypress.config.js**: Global Cypress configuration.
+
+---
+
+## 🛠️ How to Add a New Test
+
+1. Navigate to the `cypress/e2e/` directory.
+2. Create a new `.cy.js` file with a meaningful name.
+3. Write your test following best practices (see the next section).
+4. Example test:
+
+```js
+describe('Login', () => {
+  it('Should log in with valid credentials', () => {
+    cy.visit('/login');
+    cy.get('#username').type('demo_user');
+    cy.get('#password').type('secure_password');
+    cy.get('button[type=submit]').click();
+    cy.contains('Welcome, demo_user').should('be.visible');
+  });
+});
+```
+
+5. Run your test using:
+```bash
+npx cypress run --spec cypress/e2e/login.cy.js
+```
+
+---
+
+## Coding Standards and Best Practices
+
+- Each test case should belong to a **proper test suite** and be tagged accordingly (`sanity`, `regression`, etc.).
+- No assumptions should be made about the system state.
+- Use **proper selectors** to identify elements and follow the **Page Object Model (POM)**.
+- **Avoid hard-coded data**—use `fixtures` for reusable test data.
+- Do not create **unused or duplicate methods**.
+- Remove **console logs**, **cy logs**, and **unused imports**.
+- Do not leave **commented code** in test files.
+- Ensure **meaningful method names** and **clear parameter names**.
+- Avoid **duplicating code**—create reusable Cypress commands when needed.
+- Keep **spec files small and modular**.
+- Use **clear and descriptive names** for tests, methods, and variables.
+- If a **code smell** is found, provide an example and a suggested fix.
+- Follow best practices and **accept PR feedback constructively**.
+
+---
+
 ## Additional Resources
 
 📌 Official Cypress Documentation: [https://docs.cypress.io](https://docs.cypress.io)
@@ -229,9 +248,7 @@ After execution, you can find the HTML report attached to each run.
 
 ---
 
-### Ready to Get Started?
-
-Follow the steps and start running automation tests with **Cypress**. 🚀
+### Contributing
 
 📌 *If you encounter issues, check the documentation or open an issue in this repository.*
 

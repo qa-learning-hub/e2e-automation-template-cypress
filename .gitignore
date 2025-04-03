@@ -55,3 +55,9 @@ docker-compose.override.yml
 Thumbs.db
 *.bak
 *.tmp
+
+# Exclude husky files
+.husky/*
+## Allow custom husky hooks
+!.husky/pre-commit
+!.husky/pre-push

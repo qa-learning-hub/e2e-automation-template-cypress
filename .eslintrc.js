@@ -8,7 +8,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:cypress/recommended',
-    'plugin:prettier/recommended'
+    'airbnb'
   ],
   overrides: [
     {
@@ -37,4 +37,5 @@ module.exports = {
     'cypress/assertion-before-screenshot': 'warn',
     'cypress/no-assigning-return-values': 'error'
   }
+  plugins: ['cypress'],
 };

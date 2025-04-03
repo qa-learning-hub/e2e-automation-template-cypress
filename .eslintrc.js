@@ -25,17 +25,5 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module'
   },
-  rules: {
-    'prettier/prettier': 'error',
-    'no-console': 'warn',
-    'no-debugger': 'error',
-    'no-empty': 'error',
-    'quotes': ['error', 'single', { avoidEscape: true }],
-    'comma-dangle': ['error', 'never'],
-    'no-undef': 'off',
-    'cypress/no-unnecessary-waiting': 'error',
-    'cypress/assertion-before-screenshot': 'warn',
-    'cypress/no-assigning-return-values': 'error'
-  }
   plugins: ['cypress'],
 };

@@ -11,7 +11,10 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "format": "prettier --write .",
+    "format": "npm run format:js -- --fix ; npm run format:all-except-js -- --write",
+    "format-check": "npm run format:js; npm run format:all-except-js -- --check",
+    "format:js": "eslint --ignore-path .gitignore .",
+    "format:all-except-js": "prettier --ignore-path .gitignore '**/*.{json,md}'",
     "start": "npx cypress open",
     "test": "npx cypress run",
     "test:qa": "npx cypress run --env env=qa",

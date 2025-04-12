@@ -250,5 +250,8 @@ npx cypress run --spec cypress/e2e/login.cy.js
 
 ### Contributing
 
+We welcome your contributions! For details on how to contribute, please refer to our 
+[Contribution Guidelines](docs/CONTRIBUTE-js.md).
+
 📌 *If you encounter issues, check the documentation or open an issue in this repository.*
 

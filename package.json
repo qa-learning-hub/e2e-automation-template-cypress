@@ -13,6 +13,8 @@
   "scripts": {
     "format": "prettier --write .",
     "start": "npx cypress open",
+    "sonar-unix": "node scripts/sonar/sonar-project.cjs",
+    "sonar-windows": "node scripts\\sonar\\sonar-project.cjs",
     "test": "npx cypress run",
     "test:qa": "npx cypress run --env env=qa",
     "test:staging": "npx cypress run --env env=staging",
@@ -34,6 +36,7 @@
     "mochawesome-merge": "^5.0.0",
     "mochawesome-report-generator": "^6.2.0",
     "prettier": "^3.0.3",
-    "snyk": "^1.1295.3"
+    "snyk": "^1.1295.3",
+    "sonarqube-scanner": "^4.3.0"
   }
 }
